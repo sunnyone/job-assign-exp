@@ -1,0 +1,185 @@
+﻿# A5:ER FORMAT:16
+# A5:ER ENCODING:UTF8
+# A5:ER Mk-1 Copyright © 2007 m.matsubara
+# A5:SQL Mk-2 Version 2.17.4 Copyright © 1997 - 2022 m.matsubara
+#  https://a5m2.mmatsubara.com
+
+[Manager]
+ProjectName=db-sample
+Author=
+MaxEntityRowShow=1000
+ReadOnlyRecommend=0
+Page=Main
+PageInfo="Main",3,"A3Landscape",$FFFFFF
+LogicalView=1
+DecodeDomain=0
+ViewModePageIndividually=1
+ViewMode=3
+ViewFormat=0
+UseNondependenceDashLine=0
+FontName=Noto Sans CJK JP
+FontSize=12
+PaperSize=A4Landscape
+HeaderLeft=
+HeaderCenter=
+HeaderRight=
+FooterLeft=
+FooterCenter=
+FooterRight=
+ShowPageoutRelation=1
+RDBMSType=6
+RDBMSTypeName=PostgreSQL
+GenerateComment=0
+GenerateDropTableStatement=1
+DropTableIfExists=1
+BackupRestoreTempTable=0
+CreateFk=1
+GenerateCommentStatement=0
+GenerateCommentStatement_LName=0
+GenerateCommentStatement_Comment=0
+DefaultPkName=%0:s_PKC
+DefaultPkIndexName=%0:s_PKI
+DefaultIndexName=%0:s_IX%1:d
+DefaultFkName=%0:s_FK%1:d
+SqlSeparator=0
+UpperCaseKeyword=1
+ShowTag=1
+ShowCommonAttributes=0
+BugFixEntityWidth=1
+
+[Entity]
+PName=runner
+LName=runner
+Comment=
+TableOption=
+Page=MAIN
+Left=150
+Top=300
+Field="id","id","serial","NOT NULL",0,"","",$FFFFFFFF,""
+Field="name","name","text","NOT NULL",,"","",$FFFFFFFF,""
+Field="priority","priority","integer","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20230511175934
+Position="MAIN",150,300,376,233
+ZOrder=9
+
+[Entity]
+PName=job_type
+LName=job_type
+Comment=
+TableOption=
+Page=MAIN
+Left=1500
+Top=350
+Field="id","id","serial","NOT NULL",0,"","",$FFFFFFFF,""
+Field="name","name","text","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20230511154904
+Position="MAIN",1500,350,407,183
+ZOrder=10
+
+[Entity]
+PName=job
+LName=job
+Comment=
+TableOption=
+Page=MAIN
+Left=750
+Top=650
+Field="id","id","serial","NOT NULL",0,"","",$FFFFFFFF,""
+Field="name","name","text","NOT NULL",,"","",$FFFFFFFF,""
+Field="job_type_id","job_type_id","integer","NOT NULL",,"","",$FFFFFFFF,""
+Field="running_time","running_time","tstzrange","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20230511172631
+Position="MAIN",750,650,519,228
+ZOrder=12
+
+[Entity]
+PName=runner_support_job_type
+LName=runner_support_job_type
+Comment=
+TableOption=
+Page=MAIN
+Left=750
+Top=150
+Field="runner_id","runner_id","integer","NOT NULL",0,"","",$FFFFFFFF,""
+Field="job_type_id","job_type_id","integer","NOT NULL",1,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20230511155303
+Position="MAIN",750,150,548,135
+ZOrder=13
+
+[Relation]
+Entity1=job_type
+Entity2=job
+RelationType1=2
+RelationType2=3
+Fields1=id
+Fields2=job_type_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,7766,7266,4912,R,R,""
+Dependence=0
+Caption=
+PName=
+ModifiedDateTime=20230511155852
+LineMode=0
+Bar1=777
+Bar2=727
+Bar3=491
+TermPos1=R
+TermPos2=R
+ZOrder=15
+
+[Relation]
+Entity1=job_type
+Entity2=runner_support_job_type
+RelationType1=2
+RelationType2=3
+Fields1=id
+Fields2=job_type_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,2995,9222,5744,R,R,""
+Dependence=1
+Caption=
+PName=
+ModifiedDateTime=20230511160453
+LineMode=0
+Bar1=300
+Bar2=922
+Bar3=574
+TermPos1=R
+TermPos2=R
+ZOrder=16
+
+[Relation]
+Entity1=runner
+Entity2=runner_support_job_type
+RelationType1=2
+RelationType2=3
+Fields1=id
+Fields2=runner_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,5385,6638,4568,R,R,""
+Dependence=1
+Caption=
+PName=
+ModifiedDateTime=20230511172733
+LineMode=0
+Bar1=538
+Bar2=664
+Bar3=457
+TermPos1=R
+TermPos2=R
+ZOrder=17
